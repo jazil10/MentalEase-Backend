@@ -76,6 +76,7 @@ function Register() {
           email,
           password,
           pic: file,
+          // isAdmin: true  // Added isAdmin field set to true
         }),
  
         {

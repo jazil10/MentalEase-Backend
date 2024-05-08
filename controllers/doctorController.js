@@ -38,16 +38,19 @@ const getnotdoctors = async (req, res) => {
 
 const applyfordoctor = async (req, res) => {
   try {
+    console.log("req.locals", req.locals);
     const alreadyFound = await Doctor.findOne({ userId: req.locals });
     if (alreadyFound) {
       return res.status(400).send("Application already exists");
     }
 
     const doctor = Doctor({ ...req.body.formDetails, userId: req.locals });
-    const result = await doctor.save();
+    console.log("doctor", doctor);
+    await doctor.save();
 
     return res.status(201).send("Application submitted successfully");
   } catch (error) {
+    console.log("error", error);
     res.status(500).send("Unable to submit application");
   }
 };
@@ -73,6 +76,7 @@ const acceptdoctor = async (req, res) => {
 
     return res.status(201).send("Application accepted notification sent");
   } catch (error) {
+    console.log("error", error);  
     res.status(500).send("Error while sending notification");
   }
 };

@@ -30,7 +30,7 @@ const AdminApplications = () => {
       if (confirm) {
         const { data } = await toast.promise(
           axios.put(
-            "/doctor/acceptdoctor",
+            "http://localhost:5000/api/doctor/acceptdoctor",
             { id: userId },
             {
               headers: {
@@ -58,7 +58,7 @@ const AdminApplications = () => {
       if (confirm) {
         const { data } = await toast.promise(
           axios.put(
-            "/doctor/rejectdoctor",
+            "http://localhost:5000/api/doctor/rejectdoctor",
             { id: userId },
             {
               headers: {
