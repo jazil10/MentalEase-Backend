@@ -10,6 +10,7 @@ const schema = mongoose.Schema(
     lastname: {
       type: String,
       required: true,
+      
       minLength: 3,
     },
     email: {

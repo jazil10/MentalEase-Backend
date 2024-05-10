@@ -8,6 +8,9 @@ const appointRouter = require('./routes/appointRoutes');
 const path = require('path');
 const notificationRouter = require('./routes/notificationRouter');
 const chatbotRouter = require('./routes/chatbotRoutes');
+const multer = require('multer');
+const storage = multer.memoryStorage(); // Store files in memory
+const upload = multer({ storage: storage });
 
 const app = express();
 const port = process.env.PORT || 5000;
