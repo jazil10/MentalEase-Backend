@@ -23,11 +23,9 @@ app.use('/api/appointment', appointRouter);
 app.use('/api/notification', notificationRouter);
 app.use('/api/chat', chatbotRouter);
 
-app.use(express.static(path.join(__dirname, './client/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+app.get('/', (req, res) => { 
+  res.send('Hello, Azure! This is a Node.js application.'); 
+}); 
 
 app.listen(port, () => {
   console.log(

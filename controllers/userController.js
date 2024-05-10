@@ -10,7 +10,7 @@ const upload = multer(); // Configure multer as needed for your setup
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 
 async function uploadImageToBlobStorage(buffer, blobName) {
-    const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+    const blobServiceClient = BlobServiceClient.fromConnectionString("DefaultEndpointsProtocol=https;AccountName=cloudprojectstorage;AccountKey=heEKyqe1kKThMeObokq+zA9SX+Bhr/u5sQ0HJqnEGOFJ9FcIyAbp996bB457BADluIdCsYiMr2kJ+AStVUVJNg==;EndpointSuffix=core.windows.net");
     const containerName = 'images'; // Ensure this container exists in your Azure Blob Storage
     const containerClient = blobServiceClient.getContainerClient(containerName);
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
@@ -49,12 +49,13 @@ const login = async (req, res) => {
     }
     const token = jwt.sign(
       { userId: user._id, isAdmin: user.isAdmin },
-      process.env.JWT_SECRET,
+      'XYZ123',
       { expiresIn: "2 days" }
     );
     res.status(201).send({ msg: "User logged in successfully", token });
   } catch (error) {
     res.status(500).send("Unable to login user");
+    console.log(error);
   }
 };
 
@@ -74,7 +75,7 @@ const register = async (req, res) => {
     await newUser.save();
     res.status(201).send("User registered successfully");
   } catch (error) {
-    console.log(error);
+    console.log(`error ${error}`);
     res.status(500).send("Unable to register user");
   }
 };
