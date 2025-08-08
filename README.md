@@ -195,14 +195,6 @@ We welcome contributions from developers, mental health professionals, and anyon
 4. **Push to the branch** (`git push origin feature/amazing-feature`)
 5. **Open a Pull Request**
 
-### Contribution Guidelines
-
-- Follow our code style guidelines
-- Write comprehensive tests for new features
-- Update documentation for any API changes
-- Ensure HIPAA compliance for health-related features
-- Be respectful and inclusive in all interactions
-
 ### Areas We Need Help With
 
 - **Backend Development**: API endpoints, database design, security
@@ -211,23 +203,6 @@ We welcome contributions from developers, mental health professionals, and anyon
 - **Documentation**: API docs, user guides, developer documentation
 - **Testing**: Unit tests, integration tests, security testing
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Crisis Resources
-
-If you or someone you know is in crisis, please reach out for help immediately:
-
-- **National Suicide Prevention Lifeline**: 988 (US)
-- **Crisis Text Line**: Text HOME to 741741
-- **International Association for Suicide Prevention**: [https://www.iasp.info/resources/Crisis_Centres/](https://www.iasp.info/resources/Crisis_Centres/)
-
-## 📞 Contact & Support
-
-- **Project Maintainer**: [jazil10](https://github.com/jazil10)
-- **Issues**: [GitHub Issues](https://github.com/jazil10/MentalEase-Backend/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/jazil10/MentalEase-Backend/discussions)
 
 ## 🙏 Acknowledgments
 
@@ -236,7 +211,3 @@ If you or someone you know is in crisis, please reach out for help immediately:
 - Contributors who help make mental health technology accessible
 
 ---
-
-**Note**: This project handles sensitive mental health data. All contributors must follow our privacy and security guidelines. Never commit sensitive data, and always prioritize user privacy and security in your contributions.
-
-*Together, we can build technology that makes mental health support more accessible and effective for everyone.* 🌱
