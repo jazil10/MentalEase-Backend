@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Main application
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://mentalease:password@db:5432/mentalease_db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+
+  # PostgreSQL database
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: mentalease_db
+      POSTGRES_USER: mentalease
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  # pgAdmin for database management (development only)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mentalease.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    profiles:
+      - development
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: mentalease-network
